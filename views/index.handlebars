@@ -1,0 +1,104 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand fa fa-bars fa-2x"> SMASH BURGER</a>
+
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="http://burgerbeast.com">Burger Blog</a></li>
+                <li><a href="https://github.com/glenturner/Eat-Da-Burger">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br><br>
+<style>body {
+    background-image: url(../assets/images/burger_bg.jpg);
+}
+
+h3 {
+    color: black;
+    font: 36px;
+}
+
+.glyphicon {
+    margin-right: 10px;
+}
+
+.form-control {
+    width: 37%;
+}</style>
+
+{{!-- burger list before being eaten --}}
+<div class="row">
+    <div class="col-md-4 col-md-offset-1">
+        <div class="panel-panel default">
+            <ul class="list-group">
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <p class="lead"> {{this.burger_name}} </p>
+                                <span class="input-group-btn">
+								<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+									<input type="hidden" name="devoured" value="true">
+									<button class="btn btn-success btn-lg" type="submit">SMASH IT!</button>
+								</form>
+							</span>
+                            </div>
+                        </li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+
+    {{!-- burger list after being eaten --}}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    {{#each burgers}}
+                        {{#if this.devoured}}
+                            <li class="list-group-item">
+                                <p class="lead">{{this.burger_name}} </p>
+                                <span class="input-group-trash">
+                                    <form action="burgers/delete/{{this.id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="id" value="{{this.id}}">
+                                        <button type="submit" class="btn btn-danger btn-lg"><span
+                                                class="glyphicon glyphicon-trash"></span>TRASH IT!</button>
+                                    </form>
+                            </li>
+                            </span>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="lead"><strong>CREATE YOUR BURGER AND SMASH IT!</strong></h3>
+
+        {{!-- section to add burgers --}}
+        <form class="create-update-form" action="burgers/create" method="POST">
+
+            <div class="form-group">
+                <textarea class="form-control input-sm" type="text" name="b_name" rows="3"> </textarea>
+            </div>
+
+            <button class="btn btn-warning btn-lg" type="submit">Create Burger</button>
+        </form>
+    </div>
+</div>

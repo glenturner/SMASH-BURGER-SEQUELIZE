@@ -1,0 +1,38 @@
+{
+  "name": "burger_app",
+  "version": "1.0.0",
+  "description": "Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glenturner/Eat-Da-Burger.git"
+  },
+  "keywords": [
+    "burger",
+    "create",
+    "eat",
+    "node",
+    "express",
+    "handlebars",
+    "mysql",
+    "CRUD"
+  ],
+  "author": "Glen Turner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glenturner/Eat-Da-Burger/issues"
+  },
+  "homepage": "https://github.com/glenturner/Eat-Da-Burger#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "colors": "^1.1.2",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.8",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  }
+}
