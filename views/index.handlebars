@@ -45,13 +45,13 @@ h3 {
         <div class="panel-panel default">
             <ul class="list-group">
                 {{#each burgers}}
-                    {{#unless this.devoured}}
+                    {{#unless this.Smashed}}
                         <li class="list-group-item">
                             <div class="input-group">
                                 <p class="lead"> {{this.burger_name}} </p>
                                 <span class="input-group-btn">
 								<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-									<input type="hidden" name="devoured" value="true">
+									<input type="hidden" name="Smashed" value="true">
 									<button class="btn btn-success btn-lg" type="submit">SMASH IT!</button>
 								</form>
 							</span>
@@ -70,7 +70,7 @@ h3 {
             <div class="panel panel-default">
                 <ul class="list-group">
                     {{#each burgers}}
-                        {{#if this.devoured}}
+                        {{#if this.Smashed}}
                             <li class="list-group-item">
                                 <p class="lead">{{this.burger_name}} </p>
                                 <span class="input-group-trash">
@@ -92,10 +92,10 @@ h3 {
         <h3 class="lead"><strong>CREATE YOUR BURGER AND SMASH IT!</strong></h3>
 
         {{!-- section to add burgers --}}
-        <form class="create-update-form" action="burgers/create" method="POST">
+        <form class="create-update-form" action="/burgers/create" method="POST">
 
             <div class="form-group">
-                <textarea class="form-control input-sm" type="text" name="b_name" rows="3"> </textarea>
+                <input class="form-control input-lg" type="text" name="burger_name" rows="3"> </input>
             </div>
 
             <button class="btn btn-warning btn-lg" type="submit">Create Burger</button>

@@ -1,8 +1,44 @@
-var express = require('express');
-var router = express.Router();
-var burgers = require('../models/burger.js');
-var colors = require('colors');
 
+// Dependencies
+// =============================================================
+
+var db = require("../models");
+
+// Routes
+// =============================================================
+module.exports = function(app) {
+
+    // GET route for getting all of the burgers
+    app.get("/burgers", function (req, res) {
+        // findAll returns all entries for a table when used with no options
+        db.Burger.findAll({}).then(function (data) {
+            var hbsObject = {burgers: data};
+
+            res.render('index', hbsObject);
+            // Testing/Debugging //
+            console.log(hbsObject);
+        });
+    });
+    // POST route for saving a new burger
+    app.post("/burgers/create", function(req, res) {
+        // create takes an argument of an object describing the item we want to
+        // insert into our table. In this case we just we pass in an object with a text
+        // and complete property (req.body)
+        console.log("This is req.body " + JSON.stringify(req.body));
+        db.Burger.create({
+            burger_name: req.body.burger_name
+
+        }).then(function(data) {
+            res.redirect('/burgers');
+        });
+    });
+};
+
+
+
+
+
+/*
 router.get('/', function(req, res){
     res.redirect('/burgers')
 });
@@ -46,5 +82,6 @@ router.delete('/burgers/delete/:id', function(req,res){
 });
 
 module.exports = router;
+*/
 
 
