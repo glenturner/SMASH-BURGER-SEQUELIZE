@@ -45,13 +45,13 @@ h3 {
         <div class="panel-panel default">
             <ul class="list-group">
                 {{#each burgers}}
-                    {{#unless this.Smashed}}
+                    {{#unless this.devoured}}
                         <li class="list-group-item">
                             <div class="input-group">
                                 <p class="lead"> {{this.burger_name}} </p>
                                 <span class="input-group-btn">
 								<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-									<input type="hidden" name="Smashed" value="true">
+									<input type="hidden" name="devoured" value="true">
 									<button class="btn btn-success btn-lg" type="submit">SMASH IT!</button>
 								</form>
 							</span>
@@ -70,7 +70,7 @@ h3 {
             <div class="panel panel-default">
                 <ul class="list-group">
                     {{#each burgers}}
-                        {{#if this.Smashed}}
+                        {{#if this.devoured}}
                             <li class="list-group-item">
                                 <p class="lead">{{this.burger_name}} </p>
                                 <span class="input-group-trash">
