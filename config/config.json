@@ -16,11 +16,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "burger_db",
-    "port": "8889",
-    "host": "127.0.0.1",
+    "username": "b2an2i3e0j2g2j7t",
+    "password": "j7fv86ntkv2z2pvn",
+    "database": "xpfwvcy4vwggfk5a",
+    "port": "3306",
+    "host": "s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
